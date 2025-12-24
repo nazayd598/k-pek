@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Dog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #111;
+      color: #eee;
+    }
+    img {
+      max-width: 500px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Random Dog Image</h1>
+  <button onclick="loadDog()">Yeni Köpek</button>
+  <div>
+    <img id="dog" src="" alt="Dog will appear here">
+  </div>
+
+  <script>
+    async function loadDog() {
+      const res = await fetch("https://dog.ceo/api/breeds/image/random");
+      const data = await res.json();
+      document.getElementById("dog").src = data.message;
+    }
+
+    loadDog();
+  </script>
+
+</body>
+</html>
